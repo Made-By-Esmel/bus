@@ -6,7 +6,7 @@ $(document).ready(function () {
             return;
         } 
         else if (a >= 4600 && a <= 4700) {
-            document.location.href = "/22xd40";
+            document.location.href = "https://businfo.madebyesmel.com/22xd40";
         }
         
         else if (a >= 4500 && a <= 4598) {
