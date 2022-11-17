@@ -38,7 +38,7 @@ $(document).ready(function () {
         } 
 
         else {
-            alert("Not a valid number");
+            alert("This is an invalid bus identification number or is pre-2018 which isn't supported yet.");
         }
     });
 });
