@@ -2,7 +2,7 @@
   --canvasColor: rgba(17, 17, 17, 1);
   --backgroundColor: rgba(42, 49, 59, 1);
   --foregroundColor: rgba(227, 242, 253, 1);
-  --primaryColor: #99E1D9;
+  --primaryColor: rgba(153, 225, 217, 1);
   --primaryShade5: rgba(253, 211, 226, 1);
   --primaryShade4: rgba(251, 163, 196, 1);
   --primaryShade3: rgba(250, 117, 167, 1);
@@ -73,11 +73,35 @@ main section {
   padding: 40px 40px 50px;
 }
 
+@media (max-width: 992px) {
+	section:not(:last-child) {
+		border-width: 0 0 1px;
+	}
+	section:last-child {
+		border-width: 0;
+	}
+}
+
 @media (min-width: 992px) {
-  main {
-    grid: repeat(9, auto)/45% 1fr 45%;
-    grid-auto-flow: dense;
-  }
+	main {
+		grid: repeat(9, auto) / 45% 1fr 45%;
+		grid-auto-flow: dense;
+	}
+	
+	.forms {
+		grid-column: 1 / 3;
+		border-width: 0;
+	}
+
+}
+/*typography*/
+strong {
+	font-weight: 500;
+}
+
+em {
+	font-style: italic;
+}
 
   h1 {
     font: 700 48px/1.2 "Poppins", sans-serif;
@@ -199,4 +223,3 @@ main section {
       grid-column: span 2;
     }
   }
-}
