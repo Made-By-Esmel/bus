@@ -1,41 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Bus Form</title>
-    <script src="./script.js"></script>
-    <link rel="icon" href="https://esmel.xyz/favicon.png"/>
-    <link rel="apple-touch-icon" href="https://esmel.xyz/favicon.png"/>
-    
-    <meta name="viewport" content="width=device-width">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,500,500i,700" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css"/>
-    <link rel="stylesheet" href="./style.css" />
 
-  </head>
-  <body>
-    <main>
-      <section class="forms">
-        <h1>Input Bus Identification Number Below</h1>
-        <div class="form-login">
-          <div class="input__wrapper">
-            <label class="label-form">Bus Number</label>
-            <input class="input-form" type="number" id="numbers" placeholder="Enter Bus ID Here"/>
-          </div>         
-          <button onclick="startt()" class="button" type="submit" id="submitbutton">Submit</button>
+<head>
+  <meta charset="UTF-8" />
+  <title>Bus Form</title>
+  <script src="./script.js"></script>
+  <link rel="icon" href="https://esmel.xyz/favicon.png" />
+  <link rel="apple-touch-icon" href="https://esmel.xyz/favicon.png" />
+
+  <meta name="viewport" content="width=device-width">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,500,500i,700" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" />
+  <link rel="stylesheet" href="./style.css" />
+
+</head>
+
+<body>
+  <main>
+    <section class="forms">
+      <h1>Input Bus Identification Number Below</h1>
+      <div class="form-login">
+        <div class="input__wrapper">
+          <label class="label-form">Bus Number</label>
+          <input class="input-form" type="number" id="numbers" placeholder="Enter Bus ID Here" />
         </div>
-      </section>
-    </main>
-    <script>
-      var input = document.getElementById("numbers");
+        <button onclick="startt()" class="button" type="submit" id="submitbutton">Submit</button>
+      </div>
+    </section>
+  </main>
+  <script>
+    var input = document.getElementById("numbers");
 
-      input.addEventListener("keypress", function (event) {
-        if (event.key === "Enter") {
-          document.getElementById("submitbutton").click();
-        }
-      });
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  </body>
+    input.addEventListener("keypress", function (event) {
+      if (event.key === "Enter") {
+        document.getElementById("submitbutton").click();
+      }
+    });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</body>
+
 </html>
