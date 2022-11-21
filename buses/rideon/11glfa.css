@@ -1,0 +1,129 @@
+html,
+body {
+  font: 200 16px Lato, sans-serif;
+  height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  -webkit-transform: translateZ(0px);
+  transform: translateZ(0px);
+}
+
+h1 {
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1em;
+}
+
+h3 {
+  font-size: .8em;
+  font-weight: 100;
+  color: #555;
+}
+
+h5 {
+  font-size: .5em;
+  font-weight: 400;
+}
+
+p {
+  font: 18px Lato, sans-serif;
+  color: #777;
+  padding: 3em 0;
+}
+
+.open {
+  -webkit-transform: translateZ(0px);
+  transform: translateZ(0px);
+}
+
+.header {
+  position: fixed;
+  color: #fff;
+  z-index: 999;
+  width: 100%;
+  top: 1em;
+}
+
+.logo,
+.menu {
+  display: inline-block;
+}
+
+.header .logo {
+  margin-left: 3em;
+}
+
+.header .menu {
+  float: right;
+  margin-right: 3.7em;
+  line-height: 2;
+}
+
+.hero {
+  font-size: 3em;
+  line-height: 0.1;
+  text-align: center;
+}
+
+.hero-title {
+  position: absolute;
+  z-index: 1;
+  color: #fff;
+  top: 40%;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.hero-image {
+  background: url(./22xd40.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+}
+
+/* .hero-image img {
+  width: 100%;
+  height: auto;
+} */
+
+.container {
+  opacity: 0;
+  visibility: hidden;
+  margin-top: 300px;
+}
+
+.container img {
+  width: 80%;
+  height: auto;
+  margin: 0 auto;
+  margin: 3em 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.inner {
+  margin: 0 10%;
+}
+
+.inner p {
+  max-width: 800px;
+  line-height: 2;
+  margin: auto;
+  text-align: left;
+}
