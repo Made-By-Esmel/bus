@@ -70,10 +70,10 @@ main {
   text-align: left;
 }
 
-main section {
+/* main section {
   position: relative;
   padding: 40px 40px 50px;
-}
+} */
 
 @media (max-width: 992px) {
 	section:not(:last-child) {
