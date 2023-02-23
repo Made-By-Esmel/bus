@@ -1,226 +1,139 @@
-:root {
-  --canvasColor: rgba(17, 17, 17, 1);
-  --backgroundColor: rgba(42, 49, 59, 1);
-  --foregroundColor: rgba(227, 242, 253, 1);
-  --primaryColor: rgba(153, 225, 217, 1);
-  --primaryShade5: rgba(253, 211, 226, 1);
-  --primaryShade4: rgba(251, 163, 196, 1);
-  --primaryShade3: rgba(250, 117, 167, 1);
-  --primaryShade2: rgba(227, 80, 135, 1);
-  --primaryShade1: rgba(182, 64, 108, 1);
-  --secondaryColor: rgba(50, 61, 165, 1);
-  --secondaryShade5: rgba(199, 202, 230, 1);
-  --secondaryShade4: rgba(143, 149, 205, 1);
-  --secondaryShade3: rgba(105, 113, 189, 1);
-  --secondaryShade2: rgba(46, 56, 148, 1);
-  --secondaryShade1: rgba(41, 50, 136, 1);
-  --accentShade5: rgba(255, 239, 196, 1);
-  --accentShade4: rgba(255, 224, 138, 1);
-  --accentShade3: rgba(255, 207, 77, 1);
-  --accentShade2: rgba(232, 181, 38, 1);
-  --accentShade1: rgba(209, 163, 34, 1);
-  --accent2Color: rgba(83, 221, 108, 1);
-  --accent2Shade5: rgba(208, 245, 214, 1);
-  --accent2Shade4: rgba(161, 236, 174, 1);
-  --accent2Shade3: rgba(114, 227, 134, 1);
-  --accent2Shade2: rgba(76, 201, 99, 1);
-  --accent2Shade1: rgba(61, 161, 79, 1);
-  --accent3Color: rgba(245, 47, 87, 1);
-  --accent3Shade5: rgba(252, 198, 209, 1);
-  --accent3Shade4: rgba(249, 141, 163, 1);
-  --accent3Shade3: rgba(246, 84, 117, 1);
-  --accent3Shade2: rgba(223, 43, 80, 1);
-  --accent3Shade1: rgba(179, 35, 64, 1);
-  --neutralShade0: rgba(248, 248, 248, 1);
-  --neutralShade1: rgba(242, 242, 242, 1);
-  --neutralShade2: rgba(232, 233, 233, 1);
-  --neutralShade3: rgba(209, 211, 212, 1);
-  --neutralShade4: rgba(186, 189, 191, 1);
-  --neutralShade5: rgba(128, 132, 136, 1);
-  --neutralShade6: rgba(102, 106, 109, 1);
-  --neutralShade7: rgba(77, 80, 82, 1);
-  --neutralShade8: rgba(33, 33, 34, 1);
-  --grayColor: rgba(153, 153, 153, 1);
-  --lightGrayColor: rgba(221, 221, 221, 1);
-  --borderRadius: 6px;
-}
-
 body {
-  background: var(--canvasColor);
+  background: rgb(17, 17, 17);
   font-family: "Poppins", sans-serif;
   font-weight: 300;
   line-height: 1.5;
   font-size: 16px;
+  align-items: center;
   text-align: center;
   transition: all 0.3s ease;
 }
 
-/* * {
+* {
   box-sizing: border-box;
-} */
+}
 
 main {
-  width: 100%;
-  max-width: 1050px;
-  margin: 3em auto 0;
-  display: grid;
-  justify-items: center; /* added */
-  color: var(--foregroundColor);
+  width: 50%;
+  margin: 20vh auto 0;
+  display: block;
+  justify-items: center;
+  color: rgb(227, 242, 253);
   text-align: left;
 }
 
 /* main section {
-  position: relative;
-  padding: 40px 40px 50px;
-} */
-
-@media (max-width: 992px) {
-	section:not(:last-child) {
-		border-width: 0 0 1px;
-	}
-	section:last-child {
-		border-width: 0;
-	}
-}
-
-@media (min-width: 992px) {
-	main {
-		grid: repeat(9, auto) / 45% 1fr 45%;
-		grid-auto-flow: dense;
-	}
-	
-	.forms {
-		grid-column: 1 / 3;
-		border-width: 0;
-	}
-
-}
-/*typography*/
+    position: relative;
+    padding: 40px 40px 50px;
+  } */
 strong {
-	font-weight: 500;
+  font-weight: 500;
 }
 
 em {
-	font-style: italic;
+  font-style: italic;
 }
 
-  h1 {
-    font: 700 48px/1.2 "Poppins", sans-serif;
-    margin-bottom: 5px;
-  }
+h1 {
+  font: 700 48px/1.2 "Poppins", sans-serif;
+  margin-bottom: 5px;
+  text-align: center;
+}
 
-/* pls no steal code :) */
+button {
+  outline: none;
+  width: 100%;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  border: none;
+  font: 500 16px/1 "Poppins", sans-serif;
+  padding: 20px;
+  cursor: pointer;
+  border-radius: 6px;
+  background: rgb(153, 225, 217);
+  color: rgb(42, 49, 59);
+  position: relative;
+  top: 0;
+  transition: 0.2s ease;
+}
+button:hover {
+  top: -1px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+button:active, button:focus {
+  background: rgb(114, 227, 134);
+  outline: none;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  top: 0;
+}
+button.disabled {
+  opacity: 0.4;
+  -webkit-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
+button.medium {
+  padding: 15px 18px;
+  width: auto;
+}
+button.small {
+  padding: 10px 12px;
+  width: auto;
+  font-size: 14px;
+  font-weight: 500;
+}
 
-  button {
-    outline: none;
-    width: 100%;
-    text-align: center;
-    display: inline-block;
-    text-decoration: none;
-    border: none;
-    font: 500 16px/1 "Poppins", sans-serif;
-    padding: 20px;
-    cursor: pointer;
-    border-radius: var(--borderRadius);
-    background: var(--primaryColor);
-    color: var(--backgroundColor);
-    position: relative;
-    top: 0;
-    transition: 0.2s ease;
-  }
+.input__wrapper {
+  margin-bottom: 25px;
+  align-self: center;
+  width: 100%;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+}
 
-  button:hover {
-    top: -1px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-  }
+.label-form {
+  font-weight: 500;
+  display: block;
+  margin-bottom: 5px;
+}
 
-  button:active,
-  button:focus {
-    background: var(--primaryShade4);
-    outline: none;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-    top: 0;
-  }
+input {
+  height: 50px;
+  font-size: 16px;
+  border: 2px solid rgb(209, 211, 212);
+  align-items: center;
+  text-align: center;
+  width: 75%;
+  padding: 12px;
+  font-family: "Poppins";
+  border-radius: 6px;
+  color: rgb(227, 242, 253);
+  background: rgb(42, 49, 59);
+}
+input:focus {
+  outline: none;
+  border-color: rgb(153, 225, 217);
+}
+input:disabled {
+  cursor: not-allowed;
+  background: rgb(242, 242, 242);
+  opacity: 0.6;
+}
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+  display: none;
+}
 
-  button.button.disabled {
-    opacity: 0.4;
-    -webkit-user-select: none;
-    user-select: none;
-    pointer-events: none;
-  }
+.form-login {
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 3px 15px rgba(51, 51, 51, 0.2);
+  background: rgb(42, 49, 59);
+  margin-top: 30px;
+  /* position: relative; */
+  overflow: hidden;
 
-  button.button.medium {
-    padding: 15px 18px;
-    width: auto;
-  }
+}
 
-  button.button.small {
-    padding: 10px 12px;
-    width: auto;
-    font-size: 14px;
-    font-weight: 500;
-  }
-
-  button.accent {
-    background: var(--accentColor);
-  }
-
-  /*INPUTS FIX ASAP*/
-  .input__wrapper {
-    margin-bottom: 25px;
-  }
-
-  .label-form {
-    font-weight: 500;
-    display: block;
-    margin-bottom: 5px;
-  }
-
-  input {
-    height: 50px;
-    font-size: 16px;
-    border: 2px solid var(--neutralShade3);
-    width: 100%;
-    padding: 12px;
-    font-family: "Poppins";
-    border-radius: var(--borderRadius);
-    color: var(--foregroundColor);
-    background: var(--backgroundColor);
-  }
-
-  input:focus {
-    outline: none;
-    border-color: var(--primaryColor);
-  }
-
-  input:disabled {
-    cursor: not-allowed;
-    background: var(--neutralShade1);
-    opacity: 0.6;
-  }
-
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    display: none;
-  }
-
-  .form-login {
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 3px 15px rgba(51, 51, 51, 0.2);
-    background: var(--backgroundColor);
-    margin-top: 30px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  @media (min-width: 768px) {
-    .form-login {
-      display: grid;
-      grid: auto/1fr 40%;
-    }
-
-    .input__wrapper {
-      grid-column: span 2;
-    }
-  }
+/*# sourceMappingURL=style.css.map */

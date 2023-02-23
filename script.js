@@ -1,4 +1,4 @@
-function startt() {
+function start() {
   var a = parseInt($("#numbers").prop("value"));
   if (isNaN(a)) {
     alertInvalidNumber();
