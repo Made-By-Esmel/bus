@@ -60,11 +60,10 @@ body {
 }
 
 main {
-  width: 90%;
+  width: 100%;
   max-width: 1050px;
   margin: 3em auto 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* added */
   justify-items: center; /* added */
   color: var(--foregroundColor);
   text-align: left;
