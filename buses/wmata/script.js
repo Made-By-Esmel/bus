@@ -70,7 +70,7 @@ $($containerImg).each(function () {
   var scene = new ScrollMagic.Scene({
     duration: '100%',
     triggerElement: img,
-    offset: -wh * 0.9
+    // offset: -wh * 0.9
   })
     .setTween(imageIn)
     .addTo(controller);

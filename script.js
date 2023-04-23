@@ -14,7 +14,7 @@ function start() {
     '4450-4474': '/buses/wmata/19xd40',
     '3200-3274': '/buses/wmata/19xn40',
     '5481-5492': '/buses/wmata/18xde60',
-    '5747-5770': '/buses/rideon/glfa'
+    '5747-5770': '/buses/rideon/11glfa'
   };
 
   for (var range in busNumbers) {

@@ -84,6 +84,7 @@ p {
 
 .hero-image {
   background: url(./22xd40.jpg) no-repeat center center fixed;
+  border-radius: 10px;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
