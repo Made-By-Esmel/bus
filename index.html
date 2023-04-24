@@ -17,17 +17,8 @@
   <form>
     <label for="numbers">Input BID Below</label>
     <input id="numbers" type="number" required>
-    <button id="submitbutton" type="submit" onclick="start()">Submit</button>
+    <input id="submitbutton" type="submit" onclick="start()">Submit</input>
   </form>
-  <script>
-    var input = document.getElementById("numbers");
-
-    input.addEventListener("keypress", function (event) {
-      if (event.key === "Enter") {
-        document.getElementById("submitbutton").click();
-      }
-    });
-  </script>
 </body>
 
 </html>
