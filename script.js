@@ -1,5 +1,6 @@
 function start() {
-  var a = parseInt($("#numbers").prop("value"));
+  var numbersInput = document.getElementById("numbers");
+  var a = parseInt(numbersInput.value);
   if (isNaN(a)) {
     alertInvalidNumber();
     return;
@@ -21,7 +22,7 @@ function start() {
     var start = parseInt(range.split('-')[0]);
     var end = parseInt(range.split('-')[1]);
     if (a >= start && a <= end) {
-      document.location.href = busNumbers[range];
+      window.location.href = busNumbers[range];
       return;
     }
   }
