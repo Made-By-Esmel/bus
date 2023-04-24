@@ -2,7 +2,7 @@ function start() {
   const numberInput = document.getElementById("numbers").value;
   const redirectUrl = getRedirectUrl(numberInput);
   if (redirectUrl) {
-    window.location.href = redirectUrl;
+    window.location = redirectUrl;
   } else {
     alertInvalidNumber();
   }
