@@ -1,6 +1,8 @@
 function start() {
   const numberInput = document.getElementById("numbers").value;
+  console.log(numberInput);
   const redirectUrl = getRedirectUrl(numberInput);
+  console.log(redirectUrl);
   if (redirectUrl) {
     window.location = redirectUrl;
   } else {
