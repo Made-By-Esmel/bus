@@ -28,3 +28,12 @@ function start() {
 function alertInvalidNumber() {
   alert("This is an invalid bus identification number or is pre-2018 which isn't supported yet.");
 }
+
+var input = document.getElementById("numbers");
+
+input.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    start();
+  }
+});
