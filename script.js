@@ -1,6 +1,8 @@
-function start() {
+document.querySelector("#submitbutton").addEventListener("click"), function start () {
   const numberInput = document.querySelector("#numbers").value;
+  alert(numberInput)
   const redirectUrl = getRedirectUrl(numberInput);
+  alert(redirectUrl)
   if (redirectUrl) {
     document.location.href = redirectUrl;
   } else {
@@ -8,8 +10,10 @@ function start() {
   }
 }
 
+
 function getRedirectUrl(numberInput) {
   if (numberInput >= 4600 && numberInput <= 4700) {
+    alert(numberInput + "Hi");
     return "/buses/wmata/22xd40";
   } else if (numberInput >= 4500 && numberInput <= 4598) {
     return "/buses/wmata/21xd40";
@@ -31,6 +35,7 @@ function getRedirectUrl(numberInput) {
     return null;
   }
 }
+
 
 
 function alertInvalidNumber() {
