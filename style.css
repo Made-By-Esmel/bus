@@ -1,139 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+:root {
+  --background-color: #ffffff;
+  --text-color: #000000;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --oldbackground-color: #1c2331;
+    --background-color: #1c1c1e;
+    --text-color: #ffffff;
+  }
+}
+
 body {
-  background: rgb(17, 17, 17);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
   font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  line-height: 1.5;
-  font-size: 16px;
+}
+
+.forms {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-main {
-  width: 50%;
-  margin: 20vh auto 0;
-  display: block;
-  justify-items: center;
-  color: rgb(227, 242, 253);
-  text-align: left;
-}
-
-/* main section {
-    position: relative;
-    padding: 40px 40px 50px;
-  } */
-strong {
-  font-weight: 500;
-}
-
-em {
-  font-style: italic;
-}
-
-h1 {
-  font: 700 48px/1.2 "Poppins", sans-serif;
-  margin-bottom: 5px;
-  text-align: center;
-}
-
-button {
-  outline: none;
-  width: 100%;
-  text-align: center;
-  display: block;
-  text-decoration: none;
-  border: none;
-  font: 500 16px/1 "Poppins", sans-serif;
-  padding: 20px;
-  cursor: pointer;
-  border-radius: 6px;
-  background: rgb(153, 225, 217);
-  color: rgb(42, 49, 59);
-  position: relative;
-  top: 0;
-  transition: 0.2s ease;
-}
-button:hover {
-  top: -1px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-}
-button:active, button:focus {
-  background: rgb(114, 227, 134);
-  outline: none;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-  top: 0;
-}
-button.disabled {
-  opacity: 0.4;
-  -webkit-user-select: none;
-  user-select: none;
-  pointer-events: none;
-}
-button.medium {
-  padding: 15px 18px;
-  width: auto;
-}
-button.small {
-  padding: 10px 12px;
-  width: auto;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.input__wrapper {
-  margin-bottom: 25px;
-  align-self: center;
-  width: 100%;
-  align-items: center;
-  align-content: center;
-  text-align: center;
 }
 
 .label-form {
-  font-weight: 500;
-  display: block;
-  margin-bottom: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 8px;
 }
 
-input {
+.input-form {
+  width: 50vw;
   height: 50px;
-  font-size: 16px;
-  border: 2px solid rgb(209, 211, 212);
-  align-items: center;
-  text-align: center;
-  width: 75%;
-  padding: 12px;
-  font-family: "Poppins";
+  font-size: 14px;
+  border: 1px solid #cccccc;
   border-radius: 6px;
-  color: rgb(227, 242, 253);
-  background: rgb(42, 49, 59);
+  background-color: var(--background-color);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-family: "Poppins", sans-serif;
+  text-align: -webkit-center;
+  text-align: center;
+  color: var(--text-color);
+  cursor: pointer;
 }
-input:focus {
-  outline: none;
-  border-color: rgb(153, 225, 217);
+
+.forms button[type="submit"] {
+  margin-top: 16px;
+  width: 200px;
+  height: 40px;
+  background-color: var(--text-color);
+  color: var(--background-color);
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
 }
-input:disabled {
-  cursor: not-allowed;
-  background: rgb(242, 242, 242);
-  opacity: 0.6;
+
+@media only screen and (max-width: 1200px) {
+  .input-form {
+    width: 80vw;
+  }
 }
-input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+
+/* #dropdown {
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#dropdown::-webkit-scrollbar {
+  width: 0;
+  background-color: transparent;
+}
+
+#dropdown::-webkit-scrollbar-thumb {
+  border-radius: 0;
+  background-color: transparent;
+}
+
+#dropdown::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+#dropdown::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+#dropdown::-webkit-scrollbar {
   display: none;
 }
 
-.form-login {
-  border-radius: 10px;
-  padding: 30px;
-  box-shadow: 0 3px 15px rgba(51, 51, 51, 0.2);
-  background: rgb(42, 49, 59);
-  margin-top: 30px;
-  /* position: relative; */
-  overflow: hidden;
-
-}
-
-/*# sourceMappingURL=style.css.map */
+#dropdown {
+  margin-right: -17px;
+  padding-right: 17px;
+} */
