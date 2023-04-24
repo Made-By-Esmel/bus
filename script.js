@@ -4,7 +4,7 @@ function start() {
   const redirectUrl = getRedirectUrl(numberInput);
   console.log(redirectUrl);
   if (redirectUrl) {
-    window.location = redirectUrl;
+    window.location.href = redirectUrl;
   } else {
     alertInvalidNumber();
   }
