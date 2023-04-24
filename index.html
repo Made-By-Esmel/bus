@@ -5,30 +5,20 @@
   <meta charset="UTF-8" />
   <title>Bus Form</title>
   <script src="./script.js"></script>
-  <link rel="icon" href="https://esmel.xyz/favicon.png" />
-  <link rel="apple-touch-icon" href="https://esmel.xyz/favicon.png" />
-  <meta name="viewport" content="width=device-width">
+  <link rel="icon" href="https://madebyesmel.com/favicon.png" />
+  <link rel="apple-touch-icon" href="https://madebyesmel.com/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,500,500i,700" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" />
   <link rel="stylesheet" href="./style.css" />
 
 </head>
 
 <body>
-  <main>
-    <section class="forms">
-      <h1>Input BID Below</h1>
-      <div class="form-login">
-        <div class="input__wrapper">
-          <label class="label-form">Enter Bus ID</label>
-          <input class="input-form" type="number" id="numbers" title="Enter Bus ID" />
-        </div>
-        <button onclick="start()" class="button" type="submit" id="submitbutton">Submit</button>
-      </div>
-    </section>
-  </main>
+  <form>
+    <label for="numbers">Input BID Below</label>
+    <input id="numbers" type="number" required>
+    <button id="submitbutton" type="submit" onclick="start()">Submit</button>
+  </form>
   <script>
     var input = document.getElementById("numbers");
 
@@ -38,7 +28,6 @@
       }
     });
   </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </body>
 
 </html>
