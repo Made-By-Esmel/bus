@@ -1,10 +1,5 @@
 function start() {
-  var numbersInput = document.getElementById("numbers");
-  var a = parseInt(numbersInput.value);
-  if (isNaN(a)) {
-    alertInvalidNumber();
-    return;
-  }
+  var numbersInput = document.getElementById("numbers").value;
 
   var busNumbers = {
     '4600-4700': '/buses/wmata/22xd40',
@@ -21,7 +16,7 @@ function start() {
   for (var range in busNumbers) {
     var start = parseInt(range.split('-')[0]);
     var end = parseInt(range.split('-')[1]);
-    if (a >= start && a <= end) {
+    if (numbersInput >= start && numbersInput <= end) {
       window.location.href = busNumbers[range];
       return;
     }
