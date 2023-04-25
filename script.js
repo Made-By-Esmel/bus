@@ -4,7 +4,7 @@ document.querySelector("#submitbutton").addEventListener("click", function() {
   const redirectUrl = getRedirectUrl(numberInput);
   alert(redirectUrl);
   if (redirectUrl) {
-    window.open("https://bus.wmata.info" + redirectUrl);
+    window.open("https://bus.wmata.info" + redirectUrl, "_blank");
   } else {
     alertInvalidNumber();
   }
