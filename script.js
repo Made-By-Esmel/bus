@@ -1,10 +1,10 @@
-document.querySelector("#submitbutton").addEventListener("click", function() {
+document.querySelector("#submitbutton").addEventListener("click", function () {
   const numberInput = document.querySelector("#numbers").value;
   const redirectUrl = getRedirectUrl(numberInput);
   if (redirectUrl) {
     window.open("https://bus.wmata.info" + redirectUrl, "_blank");
   } else {
-    alertInvalidNumber();
+    alert("This is an invalid bus identification number or is pre-2018 which isn't supported yet.");
   }
 });
 
@@ -30,8 +30,4 @@ function getRedirectUrl(numberInput) {
   } else {
     return null;
   }
-}
-
-function alertInvalidNumber() {
-  alert("This is an invalid bus identification number or is pre-2018 which isn't supported yet.");
 }
