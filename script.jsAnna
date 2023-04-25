@@ -1,8 +1,6 @@
 document.querySelector("#submitbutton").addEventListener("click", function() {
   const numberInput = document.querySelector("#numbers").value;
-  alert(numberInput);
   const redirectUrl = getRedirectUrl(numberInput);
-  alert(redirectUrl);
   if (redirectUrl) {
     window.open("https://bus.wmata.info" + redirectUrl, "_blank");
     window.close();
