@@ -5,6 +5,7 @@ document.querySelector("#submitbutton").addEventListener("click", function() {
   alert(redirectUrl);
   if (redirectUrl) {
     window.open("https://bus.wmata.info" + redirectUrl, "_blank");
+    window.close();
   } else {
     alertInvalidNumber();
   }
