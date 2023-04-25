@@ -7,23 +7,25 @@
   <link rel="icon" href="https://wmata.info/static/icons/metrolight.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="./style.css" />
-  
+
 </head>
-  
+
 <body>
   <form>
     <label for="numbers">Input Bus ID Below</label>
     <input id="numbers" type="number" required>
-    <div class="radio-buttons">
-      <label>
-        <input type="radio" name="bus-type" value="wmata"> WMATA
-      </label>
-      <label>
-        <input type="radio" name="bus-type" value="rideon"> RideOn
-      </label>
+    <div>
+      <input type="radio" id="radio1" name="radio" value="radio1">
+      <label for="radio1" class="radio-label">Option 1</label>
+    </div>
+
+    <div>
+      <input type="radio" id="radio2" name="radio" value="radio2">
+      <label for="radio2" class="radio-label">Option 2</label>
     </div>
     <input id="submitbutton" type="submit">
   </form>
 </body>
 <script src="./script.js"></script>
+
 </html>
