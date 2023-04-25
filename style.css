@@ -53,7 +53,7 @@ body form input {
   text-align: -webkit-center;
   text-align: center;
   color: var(--text-color);
-  cursor: pointer;
+  cursor: text;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
