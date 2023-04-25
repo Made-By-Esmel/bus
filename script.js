@@ -1,15 +1,18 @@
-document.querySelector("#submitbutton").addEventListener("click", function () {
+document.querySelector("#submitbutton").removeEventListener("click");
+document.querySelector("#submitbutton").addEventListener("click", function (event) {
   const numberInput = document.querySelector("#numbers").value;
   const redirectUrl = getRedirectUrl(numberInput);
+  
   if (numberInput === "") {
     return;
   }
+
   if (redirectUrl) {
     window.open("https://bus.wmata.info" + redirectUrl, "_blank");
   } else {
     alert("This is an invalid bus identification number or is pre-2018 which isn't supported yet.");
+    event.preventDefault();
   }
-  event.stopPropagation();
 });
 
 function getRedirectUrl(numberInput) {
