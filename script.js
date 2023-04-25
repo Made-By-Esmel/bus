@@ -1,19 +1,17 @@
-document.querySelector("#submitbutton").addEventListener("click"), function start () {
+document.querySelector("#submitbutton").addEventListener("click", function() {
   const numberInput = document.querySelector("#numbers").value;
-  alert(numberInput)
+  alert(numberInput);
   const redirectUrl = getRedirectUrl(numberInput);
-  alert(redirectUrl)
+  alert(redirectUrl);
   if (redirectUrl) {
     document.location.href = redirectUrl;
   } else {
     alertInvalidNumber();
   }
-}
-
+});
 
 function getRedirectUrl(numberInput) {
   if (numberInput >= 4600 && numberInput <= 4700) {
-    alert(numberInput + "Hi");
     return "/buses/wmata/22xd40";
   } else if (numberInput >= 4500 && numberInput <= 4598) {
     return "/buses/wmata/21xd40";
@@ -35,8 +33,6 @@ function getRedirectUrl(numberInput) {
     return null;
   }
 }
-
-
 
 function alertInvalidNumber() {
   alert("This is an invalid bus identification number or is pre-2018 which isn't supported yet.");
