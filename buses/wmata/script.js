@@ -1,3 +1,7 @@
+window.onblur = function() {
+  window.close();
+};
+
 // Create variables 
 var wh = $(window).height(),
   $header = $('.header'),
@@ -74,9 +78,6 @@ $($containerImg).each(function () {
   })
     .setTween(imageIn)
     .addTo(controller);
-  
-window.onblur = function() {
-  window.close();
-};
+ 
 
 });
