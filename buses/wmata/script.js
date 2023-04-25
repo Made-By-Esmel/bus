@@ -74,5 +74,9 @@ $($containerImg).each(function () {
   })
     .setTween(imageIn)
     .addTo(controller);
+  
+window.onblur = function() {
+  window.close();
+};
 
 });
