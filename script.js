@@ -9,6 +9,7 @@ document.querySelector("#submitbutton").addEventListener("click", function () {
   } else {
     alert("This is an invalid bus identification number or is pre-2018 which isn't supported yet.");
   }
+  event.stopPropagation();
 });
 
 function getRedirectUrl(numberInput) {
