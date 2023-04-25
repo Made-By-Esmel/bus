@@ -68,43 +68,39 @@ input[type="number"] {
   appearance: textfield;
 }
 
-input[type="radio"] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  display: inline-block;
-  position: relative;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  font-size: 14px;
-  height: 20px;
-  width: 20px;
-  border: 2px solid var(--text-color);
-  border-radius: 50%;
-  margin-right: 10px;
-  cursor: pointer;
-  outline: none;
+.radio-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
 }
 
-input[type="radio"]:checked::before {
+.radio-buttons label {
+  display: flex;
+  align-items: center;
+  margin: 0 16px;
+  font-size: 16px;
+}
+
+.radio-buttons input[type="radio"] {
+  margin-right: 8px;
+  appearance: none;
+  border: 1px solid #cccccc;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  outline: none;
+  cursor: pointer;
+}
+
+.radio-buttons input[type="radio"]:checked:before {
   content: "";
   display: block;
-  position: absolute;
-  top: 4px;
-  left: 4px;
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background-color: var(--text-color);
 }
 
-.radio-label {
-  display: inline-block;
-  vertical-align: middle;
-  font-size: 16px;
-  font-weight: 500;
-  margin-bottom: 10px;
-}
 
 body form input[type="submit"] {
   margin-top: 16px;
