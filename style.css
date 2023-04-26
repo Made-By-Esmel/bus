@@ -108,6 +108,16 @@ input[type="number"] {
   transform: translate(-50%, -50%);
 }
 
+@media (max-width: 480px) {
+  .radio-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .radio-buttons label {
+    margin: 8px 0;
+  }
+}
 
 
 body form input[type="submit"] {
