@@ -78,6 +78,7 @@ input[type="number"] {
   display: flex;
   align-items: center;
   margin: 0 16px;
+  cursor: pointer;
   font-size: 16px;
 }
 
