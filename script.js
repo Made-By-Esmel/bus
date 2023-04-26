@@ -20,7 +20,7 @@ const rideonRanges = [
 ];
 
 const artRanges = [
-  { min: 5271, max: 5275, url: '/buses/art/0735lfw'},
+  { min: "5271A", max: "5275A", url: '/buses/art/0735lfw'},
 ];
 
 function validateInput() {
