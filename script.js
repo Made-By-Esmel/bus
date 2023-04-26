@@ -56,7 +56,7 @@ function validateInput() {
   if (isValid) {
     window.location.href = redirectUrl;
   } else {
-    alert('This is an invalid bus identification number or is pre-2018 which isn\'t fully supported yet.');
+    alert('Either the bus identification number is unsupported or you have chosen the incorrect company. Please ensure you have selected the correct company!');
   }
 }
 
