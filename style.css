@@ -35,6 +35,7 @@ body form {
 
 body form label {
   font-size: 20px;
+  cursor: text;
   font-weight: 600;
   margin-bottom: 8px;
 }
