@@ -24,20 +24,6 @@
     </div>
     <input id="submitbutton" type="submit">
   </form>
-  <script>
-    const numbersInput = document.getElementById("numbers");
-
-    numbersInput.setAttribute("pattern", "[0-9]*");
-
-    numbersInput.addEventListener("input", function () {
-      let inputValue = numbersInput.value;
-
-      inputValue = inputValue.replace(/[^\d]/g, '');
-
-      numbersInput.value = inputValue;
-    });
-
-  </script>
 </body>
 <script src="./script.js"></script>
 
