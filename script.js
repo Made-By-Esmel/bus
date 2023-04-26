@@ -41,6 +41,7 @@ const form = document.querySelector('form');
 const numbersInput = document.querySelector('#numbers');
 const wmataRadio = document.querySelector('input[value="wmata"]');
 const rideonRadio = document.querySelector('input[value="rideon"]');
+const art = document.querySelector('input[value="rideon"]');
 
 const wmataRanges = [
   { min: 4600, max: 4700, url: '/buses/wmata/22xd40' },
@@ -55,6 +56,10 @@ const wmataRanges = [
 
 const rideonRanges = [
   { min: 5747, max: 5770, url: '/buses/rideon/11glfa' },
+];
+
+const artRanges = [
+  { min: 5271, max: 5275, url: '/buses/art/0735lfw'},
 ];
 
 function validateInput() {
@@ -76,6 +81,13 @@ function validateInput() {
         isValid = true;
         redirectUrl = range.url;
         break;
+      }
+    }
+  } else if (art.checked) {
+    for (let range of artRanges) {
+      if (inputNumber >= range.min && inputNumber <= range.max) {
+        isValid = true;
+        redirectUrl = range.url;
       }
     }
   }
