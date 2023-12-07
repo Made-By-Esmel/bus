@@ -2,7 +2,6 @@ window.onblur = function() {
   window.close();
 };
 
-// Create variables 
 var wh = $(window).height(),
   $header = $('.header'),
   $hero = $('.hero'),
@@ -14,14 +13,12 @@ var wh = $(window).height(),
   $innerHeader = $('.inner-header'),
   $containerImg = $('.container img');
 
-// Init
 var ctrl = new ScrollMagic.Controller({
   globalSceneOptions: {
     triggerHook: 'onLeave'
   }
 });
 
-// Create scene
 $hero.each(function () {
   new ScrollMagic.Scene({
     duration: '80%',
@@ -33,7 +30,6 @@ $hero.each(function () {
 });
 
 
-// Create  timeline and animations
 var fadeScroll = new TimelineMax();
 fadeScroll
   .set($heroImg, { scale: 1.1 })
@@ -47,7 +43,6 @@ fadeScroll
   .to($header, 1, { color: 'black' }, '+1.4')
 
 
-// Create scene
 new ScrollMagic.Scene({
   duration: '120%'
 })
@@ -57,20 +52,16 @@ new ScrollMagic.Scene({
 
 
 
-//Image transition loop 
 $($containerImg).each(function () {
 
-  // Create variables
   var controller = new ScrollMagic.Controller();
   var img = this;
 
-  // Create  timeline and animations
   var imageIn = new TimelineMax();
   imageIn
     .set(img, { scale: .8 })
     .to(img, 2, { autoAlpha: 1, scale: 1, rotationX: 0, ease: Power0.easeNone });
 
-  // Create scene
   var scene = new ScrollMagic.Scene({
     duration: '100%',
     triggerElement: img,

@@ -1,44 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <title>WMATA / RideOn Bus Lookup Form</title>
-  <link rel="icon" href="https://wmata.info/static/icons/metrolight.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="./style.css" />
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Under Improvement</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <form>
-    <label for="numbers">Input Bus ID Below</label>
-    <input id="numbers" type="number" autocomplete="off" pattern="[0-9]*" required>
-    <script>
-      const input = document.getElementById('numbers');
-
-      input.addEventListener('input', function () {
-        const regex = /^[0-9]*$/;
-        if (!regex.test(input.value)) {
-          input.value = input.value.replace(/[^0-9]/g, '');
-        }
-      });
-
-    </script>
-    <div class="radio-buttons">
-      <label>
-        <input type="radio" name="bus-type" value="wmata"> WMATA
-      </label>
-      <label>
-        <input type="radio" name="bus-type" value="rideon"> RideOn
-      </label>
-      <label>
-        <input type="radio" name="bus-type" value="art"> ART
-      </label>
+    <div class="container">
+        <h1>We're Working Hard on Improvements!</h1>
+        <p>Our website is currently undergoing an overhaul. We should be back in mid-2024. Thank you for your patience.</p>
     </div>
-    <input id="submitbutton" type="submit">
-  </form>
 </body>
-<script src="./script.js"></script>
-
 </html>
