@@ -56,7 +56,7 @@ function validateInput() {
   if (isValid) {
     window.location.href = redirectUrl;
   } else {
-    alert('Either the bus identification number is unsupported or you have chosen the incorrect company. Please ensure you have selected the correct company!');
+    alert('Either the bus identification number is unsupported or you have chosen the incorrect agency. Please ensure you have selected the correct agency!');
   }
 }
 
