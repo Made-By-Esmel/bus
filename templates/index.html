@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content="{{ csrf_token }}" />
+    <title>Bus ID Lookup</title>
+    <link rel="stylesheet" href="/static/css/build.min.css" />
+    <script defer src="/static/js/app.min.js"></script>
+  </head>
+
+  <body class="min-h-screen antialiased">
+    <div class="bg-shell">
+      <div class="bg-grid"></div>
+      <div class="bg-glow glow-a"></div>
+      <div class="bg-glow glow-b"></div>
+      <div class="bg-glow glow-c"></div>
+    </div>
+
+    <main
+      id="appShell"
+      data-status="ready"
+      class="relative z-10 mx-auto flex min-h-screen w-full max-w-6xl flex-col px-4 pb-16 pt-10 sm:px-6 lg:px-8"
+    >
+      <header class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+        <div class="flex items-center gap-4">
+          <div>
+            <h1 class="font-display text-2xl sm:text-3xl">Bus ID Lookup</h1>
+          </div>
+        </div>
+
+        <div id="statusPill" data-status="ready" class="status-pill" role="status" aria-live="polite">
+          <span id="statusDot" class="h-2.5 w-2.5 rounded-full bg-slate-500"></span>
+          <span id="statusText" class="text-sm">Ready.</span>
+        </div>
+      </header>
+
+      <section class="mt-8 grid gap-6 lg:grid-cols-[1fr_1.2fr]">
+        <div class="glass-panel p-5 sm:p-6">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Lookup Console</p>
+              <h2 class="font-display mt-1 text-xl text-white">Search the registry</h2>
+              <p class="mt-1 text-sm text-slate-400">Select an agency, then enter a vehicle ID.</p>
+            </div>
+          </div>
+
+          <form id="lookupForm" class="mt-6 space-y-4">
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div>
+                <label for="agency" class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Agency</label>
+                <div class="relative mt-2">
+                  <select id="agency" class="field w-full appearance-none pr-10">
+                    {% for agency in agencies %}
+                      <option value="{{ agency.key|lower }}">{{ agency.display_name }}</option>
+                    {% endfor %}
+                  </select>
+                  <svg
+                    class="pointer-events-none absolute right-3 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </div>
+              </div>
+
+              <div>
+                <label for="busId" class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400"
+                  >Vehicle ID</label
+                >
+                <div class="relative mt-2">
+                  <input
+                    id="busId"
+                    type="text"
+                    inputmode="text"
+                    autocomplete="off"
+                    placeholder="43000"
+                    class="field w-full pr-12"
+                  />
+                  <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+                    <span class="rounded-lg bg-white/5 px-2 py-1 text-[11px] font-semibold text-slate-400 ring-1 ring-white/10"
+                      >ID</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div class="flex flex-wrap items-center gap-2 text-xs text-slate-500">
+              </div>
+              <div class="flex gap-3">
+                <button id="searchBtn" type="submit" class="button-primary">
+                  <span id="btnText">Lookup</span>
+                  <svg id="btnIcon" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path
+                      fill-rule="evenodd"
+                      d="M8.5 3.5a5 5 0 103.17 8.87l3.23 3.23a.75.75 0 101.06-1.06l-3.23-3.23A5 5 0 008.5 3.5zM5 8.5a3.5 3.5 0 117 0 3.5 3.5 0 01-7 0z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </button>
+
+                <button id="resetBtn" type="button" class="button-ghost">Reset</button>
+              </div>
+            </div>
+          </form>
+
+          <div class="loading-track">
+            <div id="progressBar" class="loading-bar"></div>
+          </div>
+
+          <div id="noticeBox" class="mt-5 hidden rounded-2xl p-4 ring-1" role="status" aria-live="polite">
+            <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <div id="noticeTitle" class="text-sm font-semibold"></div>
+                <div id="noticeText" class="mt-0.5 text-sm opacity-90"></div>
+              </div>
+
+              <div id="noticeActions" class="flex flex-wrap items-center gap-2 sm:justify-end"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-panel p-5 sm:p-6">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Spec Sheet</p>
+              <h2 class="font-display mt-1 text-xl text-white">Vehicle details</h2>
+            </div>
+          </div>
+
+          <div id="emptyState" class="mt-6 rounded-2xl border border-white/10 bg-white/5 p-5">
+            <div class="text-sm text-slate-300">No lookup yet.</div>
+            <div class="mt-1 text-xs text-slate-500">Pick an agency, enter a vehicle ID, and hit Lookup.</div>
+          </div>
+
+          <div id="specUI" class="mt-6 hidden space-y-4">
+            <div class="rounded-2xl border border-white/10 bg-black/30 p-5">
+              <div class="text-xs uppercase tracking-[0.2em] text-slate-500">Vehicle</div>
+              <div id="headline" class="font-display mt-2 text-2xl text-white">—</div>
+            </div>
+
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div class="stat-card">
+                <div class="text-xs uppercase tracking-[0.2em] text-slate-500">Year</div>
+                <div id="year" class="mt-2 text-lg font-semibold text-white">—</div>
+              </div>
+              <div class="stat-card">
+                <div class="text-xs uppercase tracking-[0.2em] text-slate-500">Length</div>
+                <div id="length" class="mt-2 text-lg font-semibold text-white">—</div>
+              </div>
+              <div class="stat-card sm:col-span-2">
+                <div class="text-xs uppercase tracking-[0.2em] text-slate-500">Propulsion Type</div>
+                <div id="ptype" class="mt-2 text-lg font-semibold text-white">—</div>
+              </div>
+              <div id="lineWrap" class="stat-card sm:col-span-2 hidden">
+                <div class="text-xs uppercase tracking-[0.2em] text-slate-500">Series</div>
+                <div id="line" class="mt-2 text-lg font-semibold text-white">—</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

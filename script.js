@@ -1,3 +1,5 @@
+// THIS IS NOT A FILE YOU SHOULD BE LOOKING AT! IT HAS NO USE ANYMORE.
+
 const form = document.querySelector('form');
 const numbersInput = document.querySelector('#numbers');
 const wmataRadio = document.querySelector('input[value="wmata"]');
