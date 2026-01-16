@@ -1,3 +1,4 @@
+import os
 import secrets
 from dataclasses import dataclass
 from typing import Any, Union
@@ -6,15 +7,33 @@ from urllib.parse import urlparse
 from fastapi import Depends, FastAPI, HTTPException, Query, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from starlette.middleware.sessions import SessionMiddleware
+from uvicorn.middleware.proxy_headers import ProxyHeadersMiddleware
+from dotenv import load_dotenv
+
+load_dotenv()
 
 BusID = Union[int, str]
 
 
+SESSION_SECRET = os.getenv("SESSION_SECRET") or secrets.token_urlsafe(32)
+SESSION_COOKIE_SAMESITE = os.getenv("SESSION_COOKIE_SAMESITE", "lax").lower()
+if SESSION_COOKIE_SAMESITE not in {"lax", "strict", "none"}:
+    SESSION_COOKIE_SAMESITE = "lax"
+SESSION_COOKIE_SECURE = os.getenv("SESSION_COOKIE_SECURE", "").lower() in {"1", "true", "yes", "on"}
+CSRF_SESSION_KEY = secrets.token_urlsafe(16)
+
 app = FastAPI()
+app.add_middleware(
+    SessionMiddleware,
+    secret_key=SESSION_SECRET,
+    same_site=SESSION_COOKIE_SAMESITE,
+    https_only=SESSION_COOKIE_SECURE,
+)
+app.add_middleware(ProxyHeadersMiddleware, trusted_hosts="*")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 templates = Jinja2Templates(directory="templates")
-CSRF_TOKEN = secrets.token_urlsafe(24)
 
 class PropulsionType(Enum):
     CNG = "CNG"
@@ -306,25 +325,56 @@ def _extract_hostname(value: str | None) -> str | None:
     return parsed.hostname
 
 
+def _split_env_list(value: str) -> list[str]:
+    return [item.strip() for item in value.split(",") if item.strip()]
+
+
+def _load_allowed_hosts(request: Request) -> set[str]:
+    hosts: set[str] = set()
+    for entry in _split_env_list(os.getenv("ALLOWED_ORIGINS", "")):
+        host = _extract_hostname(entry)
+        if host:
+            hosts.add(host)
+    domain = _extract_hostname(os.getenv("ALLOWED_DOMAIN"))
+    if domain:
+        hosts.add(domain)
+    if not hosts and request.url.hostname:
+        hosts.add(request.url.hostname)
+    return hosts
+
+
+def _get_csrf_token(request: Request) -> str:
+    token = request.session.get(CSRF_SESSION_KEY)
+    if not token:
+        token = secrets.token_urlsafe(32)
+        request.session[CSRF_SESSION_KEY] = token
+    return token
+
+
 def verify_request(request: Request) -> None:
     """Enforce a CSRF token and same-domain origin for API calls."""
-    expected_host = request.url.hostname
+    allowed_hosts = _load_allowed_hosts(request)
     request_host = _extract_hostname(request.headers.get("origin")) or _extract_hostname(
         request.headers.get("referer")
     )
 
-    if expected_host:
+    if allowed_hosts:
         if not request_host:
             raise HTTPException(status_code=403, detail="Request origin missing.")
-        if request_host != expected_host:
+        if request_host not in allowed_hosts:
             raise HTTPException(status_code=403, detail="Invalid request origin.")
 
-    header_token = request.headers.get("x-csrf-token") or request.headers.get("x-api-token")
+    header_token = (
+        request.headers.get("x-csrf-token")
+        or request.headers.get("x-xsrf-token")
+        or request.headers.get("x-api-token")
+    )
     auth_header = request.headers.get("authorization") or ""
     bearer_token = auth_header[7:].strip() if auth_header.lower().startswith("bearer ") else None
     token = header_token or bearer_token
+    expected_token = request.session.get(CSRF_SESSION_KEY)
 
-    if not token or not secrets.compare_digest(token, CSRF_TOKEN):
+    if not token or not expected_token or not secrets.compare_digest(token, expected_token):
         raise HTTPException(status_code=401, detail="Unauthorized request.")
 
 
@@ -379,7 +429,7 @@ def root(request: Request):
         {
             "request": request,
             "agencies": list_agencies(),
-            "csrf_token": CSRF_TOKEN,
+            "csrf_token": _get_csrf_token(request),
             "allowed_domain": request.url.hostname,
         },
     )
