@@ -1,4 +1,3 @@
-import os
 import secrets
 from dataclasses import dataclass
 from typing import Any, Union
@@ -309,7 +308,7 @@ def _extract_hostname(value: str | None) -> str | None:
 
 def verify_request(request: Request) -> None:
     """Enforce a CSRF token and same-domain origin for API calls."""
-    expected_host = _extract_hostname(ALLOWED_DOMAIN) or request.url.hostname
+    expected_host = request.url.hostname
     request_host = _extract_hostname(request.headers.get("origin")) or _extract_hostname(
         request.headers.get("referer")
     )
